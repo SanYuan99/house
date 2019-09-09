@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table style="border:1px red solid">
+        <th>
+            <td>id</td>
+            <td>登录用户名</td>
+            <td>登录密码</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>头像</td>
+            <td>创建人</td>
+        </th>
+        <tbody>
+            <tr th:each="user:${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.loginid}"></td>
+                <td th:text="${user.loginidpwd}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.sex}"></td>
+                <td th:text="${user.usericon}"></td>
+                <td th:text="${user.creater}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

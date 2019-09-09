@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.house.dao.HouseInformationDAO">
+  <resultMap id="BaseResultMap" type="com.example.house.bean.HouseInformation">
+    <id column="house_id" jdbcType="INTEGER" property="houseId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="site" jdbcType="VARCHAR" property="site" />
+    <result column="lift" jdbcType="VARCHAR" property="lift" />
+    <result column="metro" jdbcType="VARCHAR" property="metro" />
+    <result column="rent" jdbcType="INTEGER" property="rent" />
+    <result column="orientation_id" jdbcType="VARCHAR" property="orientationId" />
+    <result column="mold_id" jdbcType="VARCHAR" property="moldId" />
+    <result column="users_id" jdbcType="INTEGER" property="usersId" />
+    <result column="user_phone" jdbcType="INTEGER" property="userPhone" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="house_img" jdbcType="VARCHAR" property="houseImg" />
+    <result column="mating_id" jdbcType="INTEGER" property="matingId" />
+    <result column="decorate" jdbcType="VARCHAR" property="decorate" />
+    <result column="demand" jdbcType="VARCHAR" property="demand" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="rental_details" jdbcType="VARCHAR" property="rentalDetails" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updater" jdbcType="VARCHAR" property="updater" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    house_id, title, `size`, type_id, site, lift, metro, rent, orientation_id, mold_id, 
+    users_id, user_phone, area_id, house_img, mating_id, decorate, demand, release_time, 
+    rental_details, creater, create_time, updater, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from house_information
+    where house_id = #{houseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from house_information
+    where house_id = #{houseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.house.bean.HouseInformation">
+    insert into house_information (house_id, title, `size`, 
+      type_id, site, lift, 
+      metro, rent, orientation_id, 
+      mold_id, users_id, user_phone, 
+      area_id, house_img, mating_id, 
+      decorate, demand, release_time, 
+      rental_details, creater, create_time, 
+      updater, update_time)
+    values (#{houseId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{size,jdbcType=INTEGER}, 
+      #{typeId,jdbcType=INTEGER}, #{site,jdbcType=VARCHAR}, #{lift,jdbcType=VARCHAR}, 
+      #{metro,jdbcType=VARCHAR}, #{rent,jdbcType=INTEGER}, #{orientationId,jdbcType=VARCHAR}, 
+      #{moldId,jdbcType=VARCHAR}, #{usersId,jdbcType=INTEGER}, #{userPhone,jdbcType=INTEGER}, 
+      #{areaId,jdbcType=INTEGER}, #{houseImg,jdbcType=VARCHAR}, #{matingId,jdbcType=INTEGER}, 
+      #{decorate,jdbcType=VARCHAR}, #{demand,jdbcType=VARCHAR}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{rentalDetails,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.house.bean.HouseInformation">
+    insert into house_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="houseId != null">
+        house_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="site != null">
+        site,
+      </if>
+      <if test="lift != null">
+        lift,
+      </if>
+      <if test="metro != null">
+        metro,
+      </if>
+      <if test="rent != null">
+        rent,
+      </if>
+      <if test="orientationId != null">
+        orientation_id,
+      </if>
+      <if test="moldId != null">
+        mold_id,
+      </if>
+      <if test="usersId != null">
+        users_id,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="houseImg != null">
+        house_img,
+      </if>
+      <if test="matingId != null">
+        mating_id,
+      </if>
+      <if test="decorate != null">
+        decorate,
+      </if>
+      <if test="demand != null">
+        demand,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="rentalDetails != null">
+        rental_details,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="houseId != null">
+        #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="site != null">
+        #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null">
+        #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="metro != null">
+        #{metro,jdbcType=VARCHAR},
+      </if>
+      <if test="rent != null">
+        #{rent,jdbcType=INTEGER},
+      </if>
+      <if test="orientationId != null">
+        #{orientationId,jdbcType=VARCHAR},
+      </if>
+      <if test="moldId != null">
+        #{moldId,jdbcType=VARCHAR},
+      </if>
+      <if test="usersId != null">
+        #{usersId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="houseImg != null">
+        #{houseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="matingId != null">
+        #{matingId,jdbcType=INTEGER},
+      </if>
+      <if test="decorate != null">
+        #{decorate,jdbcType=VARCHAR},
+      </if>
+      <if test="demand != null">
+        #{demand,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rentalDetails != null">
+        #{rentalDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.house.bean.HouseInformation">
+    update house_information
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="site != null">
+        site = #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null">
+        lift = #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="metro != null">
+        metro = #{metro,jdbcType=VARCHAR},
+      </if>
+      <if test="rent != null">
+        rent = #{rent,jdbcType=INTEGER},
+      </if>
+      <if test="orientationId != null">
+        orientation_id = #{orientationId,jdbcType=VARCHAR},
+      </if>
+      <if test="moldId != null">
+        mold_id = #{moldId,jdbcType=VARCHAR},
+      </if>
+      <if test="usersId != null">
+        users_id = #{usersId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="houseImg != null">
+        house_img = #{houseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="matingId != null">
+        mating_id = #{matingId,jdbcType=INTEGER},
+      </if>
+      <if test="decorate != null">
+        decorate = #{decorate,jdbcType=VARCHAR},
+      </if>
+      <if test="demand != null">
+        demand = #{demand,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rentalDetails != null">
+        rental_details = #{rentalDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where house_id = #{houseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.house.bean.HouseInformation">
+    update house_information
+    set title = #{title,jdbcType=VARCHAR},
+      `size` = #{size,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      site = #{site,jdbcType=VARCHAR},
+      lift = #{lift,jdbcType=VARCHAR},
+      metro = #{metro,jdbcType=VARCHAR},
+      rent = #{rent,jdbcType=INTEGER},
+      orientation_id = #{orientationId,jdbcType=VARCHAR},
+      mold_id = #{moldId,jdbcType=VARCHAR},
+      users_id = #{usersId,jdbcType=INTEGER},
+      user_phone = #{userPhone,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      house_img = #{houseImg,jdbcType=VARCHAR},
+      mating_id = #{matingId,jdbcType=INTEGER},
+      decorate = #{decorate,jdbcType=VARCHAR},
+      demand = #{demand,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      rental_details = #{rentalDetails,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where house_id = #{houseId,jdbcType=INTEGER}
+  </update>
+</mapper>
